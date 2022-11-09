@@ -7,49 +7,46 @@ import Bookmark from './screens/bookmark';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Searching from './screens/searching';
 import InputInfo from './screens/input';
+import { BookmarkContextProvider } from './context/bookmarkContext';
 const Tab = createBottomTabNavigator();
 //알라딘 디비 받아오기
-
 
 
 export default function App() {
 
 
 
-
-//로그인 창은 드로우로.
+  //로그인 창은 드로우로.
 
   return (
-    <NavigationContainer>
-    
-    <Tab.Navigator screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-            if (route.name === 'Books') {
-              iconName = focused ? 'home' : 'home-outline';
-            } else if (route.name === 'Search'){
-              iconName = focused ? 'search' : 'search-outline';
-            } else if (route.name === 'Bookmark'){
-              iconName = focused ? 'bookmark' : 'bookmark-outline';
-            } else if (route.name === 'Input'){
-              iconName = focused ? 'book' : 'book-outline';
-            } 
-            return <Icon name={iconName} size={"20"}  color={"red"}/>;
-          },
+    <BookmarkContextProvider>
+      <NavigationContainer>
 
-        })}
+        <Tab.Navigator>
 
-        tabBarOptions={{
-          activeTintColor: 'black',
-          inactiveTintColor: 'gray',
-        }}>
-
-    <Tab.Screen name="Books" component={Home} />
-    <Tab.Screen name="Search" component={Searching} />
-    <Tab.Screen name="Bookmark" component={Bookmark} />
-    <Tab.Screen name="Input" component={InputInfo} />
-  </Tab.Navigator>
-  </NavigationContainer>
+          <Tab.Screen name="Books" component={Home} options={{
+            tabBarIcon: ({focused}) => {
+              return <Icon name={focused ? "book" : "book-outline"} size={20}></Icon>
+            }
+            , tabBarActiveTintColor:"red", tabBarInactiveTintColor:"grey"}} />
+          <Tab.Screen name="Search" component={Searching} options={{
+            tabBarIcon: ({focused}) => {
+              return <Icon name={focused ? "search" : "search-outline"} size={20}></Icon>
+            }
+            , tabBarActiveTintColor:"red", tabBarInactiveTintColor:"grey"}}/>
+          <Tab.Screen name="Bookmark" component={Bookmark} options={{
+            tabBarIcon: ({focused}) => {
+              return <Icon name={focused ? "bookmarks" : "bookmarks-outline"} size={20}></Icon>
+            }
+            , tabBarActiveTintColor:"red", tabBarInactiveTintColor:"grey"}}/>
+          <Tab.Screen name="Input" component={InputInfo} options={{
+            tabBarIcon: ({focused}) => {
+              return <Icon name={focused ? "library" : "library-outline"} size={20}></Icon>
+            }
+          , tabBarActiveTintColor:"red", tabBarInactiveTintColor:"grey"}} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </BookmarkContextProvider>
   );
 }
 

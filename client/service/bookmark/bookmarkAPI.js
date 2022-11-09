@@ -17,10 +17,10 @@ class BookmarkAPI {
 
 
     //북마크 저장
-    async bookmark(title, author, publisher, pubDate, cover, createdAt, isbn) {
+    async bookmark(title, author, publisher, pubDate, cover, createdAt, isbn, description) {
        
 
-        const data = { title, author, publisher, pubDate, cover, createdAt, isbn }
+        const data = { title, author, publisher, pubDate, cover, createdAt, isbn,description }
         const response = await fetch(this.baseURL + "/api/book/bookmark", {
 
             ...this.postOption,
@@ -51,17 +51,10 @@ class BookmarkAPI {
 
 
     
+    /**find */
     async bookmarkFind() {
-       
-
-        const response = await fetch(this.baseURL + "/api/book/findBookmark", {
-
-            ...this.postOption,
-            body: JSON.stringify()
-
-        })
-
-        return await response.json();
+        const response = await fetch(this.baseURL + "/api/book/findBookmark");
+        return response.json();
     }
 
 }

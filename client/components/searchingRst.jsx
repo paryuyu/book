@@ -13,7 +13,7 @@ function Rst({item}) {
         setBookChk((current) => !current)
         setBookmark(item)
     }
-console.log(bookmark.title,"!!")
+    
     //북마크하면 fetch로 데이터베이스에 저장하기.
     //서버 아이피 보내주기
     const serverIp = "192.168.4.25"
@@ -23,7 +23,7 @@ console.log(bookmark.title,"!!")
         let createdAt = new Date();
 
         if(bookChk){
-            bookmarkAPI.bookmark(bookmark.title,bookmark.author,bookmark.publisher,bookmark.pubDate,bookmark.cover, createdAt , bookmark.isbn )
+            bookmarkAPI.bookmark(bookmark.title,bookmark.author,bookmark.publisher,bookmark.pubDate,bookmark.cover, createdAt , bookmark.isbn , bookmark.description)
             .then(rc => {
                 console.log(rc,"client response")
             })

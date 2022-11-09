@@ -18,7 +18,8 @@ router.post("/bookmark", async (req, res) => {
         pubDate: req.body.pubDate,
         cover: req.body.cover,
         createdAt: req.body.createdAt,
-        isbn: req.body.isbn
+        isbn: req.body.isbn,
+        description: req.body.description
     }
     
     
@@ -50,15 +51,19 @@ router.post("/delBookmark", async (req, res) => {
     }
 });
 
+
 //북마크 파인드
-router.post("/findBookmark", async (req,res)=>{
+router.get("/findBookmark", async (req,res)=>{
     try{
-        let bookmarks = await BookmarkSchema.find().sort(-createdAt).lean();
+        let bookmarks = await BookmarkSchema.find({}).lean();
         res.status(200).json({ result: bookmarks, message: "find성공" })
+        console.log(bookmarks)
     }catch (e) {
-        res.json({ result: false, message: "find 다시 시도해주세요." })
+        res.json({ result: false, message: "find를 다시 시도해주세요." })
     }
 })
+
+
 
 
 module.exports = router;

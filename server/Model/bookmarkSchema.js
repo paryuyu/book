@@ -7,7 +7,8 @@ const BookmarkSchema = new mongoose.Schema({
     pubDate : String,
     cover : String,
     createdAt: Date,
-    isbn:{type: String, unique: true}
+    isbn:{type: String, unique: true},
+    description:{type: String}
 })
 
 module.exports = mongoose.model("bookmark", BookmarkSchema )
