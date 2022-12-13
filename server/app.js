@@ -1,12 +1,12 @@
 //express 설정
 const express = require("express");
 const app = express();
-
+const dotenv = require('dotenv');
+dotenv.config();
 //몽구스 설정
 const mongoose = require("mongoose");
-const uri = "mongodb+srv://mernyuyu:mernyu11@cluster0.qeg74yn.mongodb.net/?retryWrites=true&w=majority";
-mongoose.connect(uri, { dbName: "books" });
-
+mongoose.connect(process.env.MONGO, { dbName: "books" });
+console.log(process.env.MONGO)
 //바디 설정
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
