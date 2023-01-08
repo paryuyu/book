@@ -6,7 +6,7 @@ dotenv.config();
 //몽구스 설정
 const mongoose = require("mongoose");
 mongoose.connect(process.env.MONGO, { dbName: "books" });
-console.log(process.env.MONGO)
+
 //바디 설정
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())

@@ -1,18 +1,39 @@
-import { Text, View, Image, StyleSheet, ImageBackground } from "react-native";
-
+import { Text, View, Image, StyleSheet, ImageBackground, TouchableOpacity } from "react-native";
+import { Entypo } from '@expo/vector-icons';
 function Home() {
-    return (<View style={{ flex: 1 , backgroundColor:"white" }}><ImageBackground source={require("../assets/img/home.png")} style={styles.homeImg} /></View>);
+
+//폰트 적용시키기
+//구조바꾸기
+
+
+
+
+    return (<View style={styles.homeBox}>
+          <Text style={styles.start}>START</Text>
+        <TouchableOpacity>
+    
+            <View style={styles.write}><Entypo name="pencil" size={30} color="white" /></View>
+
+        </TouchableOpacity>
+
+    </View>);
 }
 //rnss
 const styles = StyleSheet.create({
-    homeImg: {
-       // flex:1,
-       // justifyContent:"center",
-      //  alignItems:"center",
-      //  alignContent:"center",
-        height:300,
-        marginVertical:150
-
+    login:{
+        marginBottom:50
+    },
+    write: {
+        borderWidth: 2,
+        borderColor: '#fff',
+        borderRadius: 10,
+        padding: 6
+    },
+    homeBox: { flex: 1, backgroundColor: "#333", justifyContent: 'center', alignItems: 'center' },
+    start:{
+        marginBottom:20,
+        fontSize:40,
+        color:'#fff'
     }
 });
 export default Home;

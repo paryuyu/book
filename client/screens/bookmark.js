@@ -13,13 +13,13 @@ function Bookmark() {
     let focus = useIsFocused();
     let ctx = useContext(BookmarkContext);
 
-    useEffect(() => {
-        bookmarkAPI.bookmarkFind()
-            .then(rc => {
-                console.log(rc.result)
-                setFindData(rc.result)
-            })
-    }, [ctx.bookmarkScr, focus])
+    // useEffect(() => {
+    //     bookmarkAPI.bookmarkFind()
+    //         .then(rc => {
+    //             console.log(rc.result)
+    //             setFindData(rc.result)
+    //         })
+    // }, [ctx.bookmarkScr, focus])
 
 
 
